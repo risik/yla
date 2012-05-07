@@ -67,6 +67,14 @@ INTNUMBER	{NUMSIGN}{UINT}
 				DPRINT("RBRACKET found");
 			}
 
+\/\*(.|\n)*\*\/		{
+				DPRINT("MULTILINE COMMENT skipped");
+			}
+
+\/\/.*\n		{
+				DPRINT("SINGLE COMMENT skipped");
+			}
+
 %%
 
 int yywrap()
