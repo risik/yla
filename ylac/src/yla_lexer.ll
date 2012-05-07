@@ -30,6 +30,12 @@ UINT	{DIGIT}+
 NUMSIGN	[+-]?
 INTNUMBER	{NUMSIGN}{UINT}
 
+STARTCMNT	"/*"
+ENDCMNT		"*/"
+INCOMMENT	[^*]|"*"[^/]
+MLNCOMMENT	{STARTCMNT}{INCOMMENT}*{ENDCMNT}
+SLNCOMMENT	"//".*\n
+
 %%
 
 {INTNUMBER}		{
@@ -67,11 +73,11 @@ INTNUMBER	{NUMSIGN}{UINT}
 				DPRINT("RBRACKET found");
 			}
 
-\/\*(.|\n)*\*\/		{
+{MLNCOMMENT}		{
 				DPRINT("MULTILINE COMMENT skipped");
 			}
 
-\/\/.*\n		{
+{SLNCOMMENT}		{
 				DPRINT("SINGLE COMMENT skipped");
 			}
 
