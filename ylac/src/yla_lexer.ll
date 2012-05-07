@@ -43,6 +43,30 @@ INTNUMBER	{NUMSIGN}{UINT}
 				DPRINT("CR found");
 			}
 
+\+			{
+				DPRINT("PLUSOP found");
+			}
+
+\-			{
+				DPRINT("MINUSOP found");
+			}
+
+\*			{
+				DPRINT("MULTOP found");
+			}
+
+\/			{
+				DPRINT("DIVOP found");
+			}
+
+\(			{
+				DPRINT("LBRACKET found");
+			}
+
+\)			{
+				DPRINT("RBRACKET found");
+			}
+
 %%
 
 int yywrap()
