@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+yla_lexer.c
 
 # Compiled Dynamic libraries
 *.so
