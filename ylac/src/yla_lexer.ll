@@ -21,12 +21,31 @@ AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <stdio.h>
+%{
+#include "dprint.h"
+%}
 
-int yylex();
+DIGIT	[0-9]
+UINT	{DIGIT}+
+NUMSIGN	[+-]?
+INTNUMBER	{NUMSIGN}{UINT}
 
-int main(int argc, char *argv[])
+%%
+
+{INTNUMBER}		{
+				unsigned int val = atoi(yytext);
+				DPRINTF("INTNUMBER %d found", val);
+			}
+
+[ \t]+			{}
+
+\n			{
+				DPRINT("CR found");
+			}
+
+%%
+
+int yywrap()
 {
-    printf("0x10c lexer test\n");
-    printf("yyparse finished with code: %d\n", yylex());
+	return 1;
 }
