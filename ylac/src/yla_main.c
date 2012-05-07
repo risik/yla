@@ -27,6 +27,11 @@ int yylex();
 
 int main(int argc, char *argv[])
 {
+    int lexer_ret = 0;
+
     printf("0x10c lexer test\n");
-    printf("yyparse finished with code: %d\n", yylex());
+    lexer_ret = yylex();
+    printf("yyparse finished with code: %d\n", lexer_ret);
+
+    return (lexer_ret==0)?0:-1;
 }
