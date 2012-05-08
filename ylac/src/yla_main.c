@@ -24,14 +24,14 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <stdio.h>
 
 int yylex();
+int yyparse();
 
 int main(int argc, char *argv[])
 {
-    int lexer_ret = 0;
+    int parser_ret = 0;
 
-    printf("0x10c lexer test\n");
-    lexer_ret = yylex();
-    printf("yyparse finished with code: %d\n", lexer_ret);
+    parser_ret = yyparse();
+    printf("yyparse finished with code: %d\n", parser_ret);
 
-    return (lexer_ret==0)?0:-1;
+    return (parser_ret==0)?0:-1;
 }
