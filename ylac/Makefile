@@ -8,8 +8,9 @@ include $(YLA_BASE_PATH)/defines.mk
 # Modules to build
 #
 OBJECTS = \
-    yla_main \
-    yla_lexer
+    yla_parser \
+    yla_lexer \
+    yla_main
 
 LIBRARY += -L/usr/local/lib
 LIBRARY_RELEASE = $(LIBRARY)
@@ -26,9 +27,15 @@ release: releaseout
 debug: debugout
 
 test: debug
+	echo LEXER Test
 	$(OUT_DEBUG) < test/lexer_test.txt
+	echo PARSER Test
+	$(OUT_DEBUG) < test/parser_test.txt
 
 $(SRCDIR)/yla_lexer.c: $(SRCDIR)/yla_lexer.ll
 	$(LEX) -o $@ $^
+
+$(SRCDIR)/yla_parser.c: $(SRCDIR)/yla_parser.yy
+	$(YACC) -o $@ $^
 
 include $(YLA_BASE_PATH)/rules.mk
