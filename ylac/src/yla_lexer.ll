@@ -29,7 +29,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 DIGIT	[0-9]
 UINT	{DIGIT}+
 NUMSIGN	[+-]?
-INTNUMBER	{NUMSIGN}{UINT}
+INTNUMBER	{UINT}
 
 STARTCMNT	"/*"
 ENDCMNT		"*/"
@@ -42,36 +42,44 @@ SLNCOMMENT	"//".*\n
 {INTNUMBER}		{
 				unsigned int val = atoi(yytext);
 				DPRINTF("INTNUMBER %d found", val);
+				return NUMBER;
 			}
 
 [ \t]+			{}
 
 \n			{
 				DPRINT("CR found");
+				return *yytext;
 			}
 
 \+			{
 				DPRINT("PLUSOP found");
+				return *yytext;
 			}
 
 \-			{
 				DPRINT("MINUSOP found");
+				return *yytext;
 			}
 
 \*			{
 				DPRINT("MULTOP found");
+				return *yytext;
 			}
 
 \/			{
 				DPRINT("DIVOP found");
+				return *yytext;
 			}
 
 \(			{
 				DPRINT("LBRACKET found");
+				return *yytext;
 			}
 
 \)			{
 				DPRINT("RBRACKET found");
+				return *yytext;
 			}
 
 {MLNCOMMENT}		{
