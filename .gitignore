@@ -3,6 +3,7 @@
 *.lo
 *.o
 yla_lexer.c
+yla_parser.c
 
 # Compiled Dynamic libraries
 *.so
