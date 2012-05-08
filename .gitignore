@@ -4,6 +4,7 @@
 *.o
 yla_lexer.c
 yla_parser.c
+token.h
 
 # Compiled Dynamic libraries
 *.so

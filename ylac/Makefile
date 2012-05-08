@@ -35,7 +35,7 @@ test: debug
 $(SRCDIR)/yla_lexer.c: $(SRCDIR)/yla_lexer.ll
 	$(LEX) -o $@ $^
 
-$(SRCDIR)/yla_parser.c: $(SRCDIR)/yla_parser.yy
-	$(YACC) -o $@ $^
+$(SRCDIR)/yla_parser.c $(SRCDIR)/token.h: $(SRCDIR)/yla_parser.yy
+	$(YACC) -o $@ --defines=$(SRCDIR)/token.h $^
 
 include $(YLA_BASE_PATH)/rules.mk
