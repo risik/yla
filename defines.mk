@@ -11,7 +11,7 @@ endif
 #
 CC      = gcc
 CXX     = g++
-LINK    = $(CXX)
+LINK    = $(CC)
 LIB     = ar -cr
 RANLIB  = ranlib
 STRIP   = strip
